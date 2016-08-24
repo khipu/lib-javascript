@@ -3604,25 +3604,25 @@ KhipuLib = {
 			return;
 		}
 		if (KhipuLib.isMobile()) {
-			KhipuLib.init(KhipuLib.sendToKhipu, KhipuLib.sendToKhipu);
+			KhipuLib.init(KhipuLib.sendToKhipu);
 		} else if (KhipuLib.isInstalled()) {
 			KhipuLib.initAtmosphere();
-			KhipuLib.init(KhipuLib.startKhipuApp, KhipuLib.sendToKhipu);
+			KhipuLib.init(KhipuLib.startKhipuApp);
 		} else {
-			KhipuLib.init(KhipuLib.sendToKhipu, KhipuLib.sendToKhipu);
+			KhipuLib.init(KhipuLib.sendToKhipu);
 		}
 	},
 	initAtmosphere: function () {
 		KhipuAtmosphere.statusServer.socket = atmosphere;
 		KhipuAtmosphere.statusServer.subscribe({url: KhipuSettings.serverUrl + 'atm/payment/status/' + KhipuLib.paymentId});
 	},
-	init: function (selectorCallback, defaultCallback) {
+	init: function (callback) {
 		if (KhipuLib.selector != null) {
 			var element = kh(KhipuLib.selector);
-			element.click(selectorCallback);
+			element.click(callback);
 			element.prop('disabled', false);
 		} else {
-			defaultCallback();
+			callback();
 		}
 	},
 	sendToKhipu: function () {
@@ -3644,7 +3644,7 @@ KhipuLib = {
 		var modalName = 'khipu-modal-window-' + KhipuLib.makeId();
 		var overlay = document.createElement('div');
 		overlay.id = modalName + 'overlay';
-		kh(overlay).css({width: '100%', height: '100%', top: 0, left: 0, position: 'fixed', 'opacity': '0.8', 'background-color': '#000000', 'z-index': 500});
+		kh(overlay).css({width: '100%', height: '100%', top: 0, left: 0, position: 'fixed', 'opacity': '0.8', 'background-color': '#000000', 'z-index': 6000});
 		document.body.appendChild(overlay);
 		var modal = document.createElement('div');
 		modal.id = modalName;

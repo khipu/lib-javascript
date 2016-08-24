@@ -3649,7 +3649,7 @@ KhipuLib = {
 		var modalName = 'khipu-modal-window-' + KhipuLib.makeId();
 		var overlay = document.createElement('div');
 		overlay.id = modalName + 'overlay';
-		kh(overlay).css({width: '100%', height: '100%', top: 0, left: 0, position: 'fixed', 'opacity': '0.8', 'background-color': '#000000', 'z-index': 500});
+		kh(overlay).css({width: '100%', height: '100%', top: 0, left: 0, position: 'fixed', 'opacity': '0.8', 'background-color': '#000000', 'z-index': 6000});
 		document.body.appendChild(overlay);
 		var modal = document.createElement('div');
 		modal.id = modalName;
